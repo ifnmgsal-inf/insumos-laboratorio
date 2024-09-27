@@ -34,10 +34,6 @@ npm install express path dotenv pdfkit fs express-session bcrypt nodemon
 
 ```
 
-### Configurar o Banco de Dados MySQL
-
-Certifique-se de que o MySQL está rodando em sua máquina local. Crie um banco de dados para o sistema.
-
 ## Configuração
 
 1. **Configurar Variáveis de Ambiente:**
@@ -60,13 +56,13 @@ DB_NAME=seu_banco_de_dados
 SESSION_SECRET=sua_chave_secreta
 ```
 ## Instruções para Importação de Dump do Banco de Dados
-Salve este conteúdo em um arquivo `.sql` e execute com o MySQL:
+Salve o 'banco_dados_si_dump.sql' e execute com o MySQL:
 
 ```bash
 mysql -u <usuario> -p < banco_dados_si_dump.sql
 ```
 
-Substitua `<usuario>` pelo seu nome de usuário. Assim, você terá a estrutura das tabelas e o usuário admin configurado corretamente.  Teno o scrpt inserido um usuario 'admin@sistema.com', 'administrador', do tipo admin e senha '12345678'
+Substitua `<usuario>` pelo seu nome de usuário. Assim, você terá a estrutura das tabelas e o usuário admin configurado corretamente.  Teno o scrpt inserido um  de email 'admin@sistema.com', nome 'administrador', do tipo admin e senha '12345678'
 
 ## Executando o Sistema
 
