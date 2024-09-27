@@ -106,39 +106,8 @@ app.listen(PORT, () => {
   console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
 });
 
-
-// Rotas protegidas
-function authenticate(req, res, next) {
-  if (req.session && req.session.user) {
-    next();
-  } else {
-    res.status(401).send('Não autorizado');
-  }
-}
-
-// Rota protegida
-app.get('/protected-route', authenticate, (req, res) => {
-  res.send('Conteúdo protegido');
-});
-
 app.get('/Relatorio', Autenticado, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'Relatorio.html'));
-});
-
-// Exemplo de rota para registrar usuário (com hash de senha)
-app.post('/register', async (req, res) => {
-  try {
-    const { nome, email, senha } = req.body;
-    
-    // Hash da senha antes de armazenar
-    const hashedPassword = await bcrypt.hash(senha, 10);
-
-    await connection.execute('INSERT INTO usuario (nome_usuario, email, senha) VALUES (?, ?, ?)', [nome, email, hashedPassword]);
-    res.status(201).json({ message: 'Usuário registrado com sucesso' });
-  } catch (error) {
-    console.error('Erro ao registrar usuário:', error);
-    res.status(500).json({ error: 'Erro no servidor' });
-  }
 });
 
     app.get('/Usuarios', Autenticado, (req, res) => {
