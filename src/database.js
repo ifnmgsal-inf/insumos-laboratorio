@@ -10,7 +10,7 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || 'banco_dados_si',
   waitForConnections: true,
   connectionLimit: 10,  // Limite de conexões simultâneas
-  queueLimit: 0         // Sem limite de filas de espera
+  queueLimit: 3         // 3 de limite de filas de espera
 });
 
 export default pool;
