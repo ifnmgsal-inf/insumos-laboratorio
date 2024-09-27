@@ -1,13 +1,11 @@
 
-# Sistema de Inventário de Produtos Químicos Fiscalizados pela PF para o IFNMG Salinas
+# Sistema WEB para Registro do Uso dos Produtos Químicos Fiscalizados pelo Departamento de Polícia Federal no IFNMG Campus Salinas
 
 <p align="center">
     <img src="https://qualitapps.com/wp-content/uploads/2023/02/102.png" width="120" height="80"/>
 </p>
 
-
-
-Este é um sistema de inventário que permite gerenciar e registrar consumos de produtos químicos. O sistema inclui uma interface web e funcionalidades para gerar relatórios em PDF.
+Este sistema foi desenvolvido com o objetivo de otimizar o gerenciamento e controle do uso de produtos químicos regulamentados pelo departamento da Polícia Federal no IFNMG - Campus Salinas.
 
 ## Pré-requisitos
 
