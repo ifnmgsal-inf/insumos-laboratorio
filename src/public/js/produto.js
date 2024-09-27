@@ -88,7 +88,30 @@ function loadProdutos(page = 1, limit = 20) { // Ajustando o limite padrão
         .catch(error => console.error('Erro ao carregar produtos:', error));
 }
 
+function loadproduto(page = 1, limit = 20) {
+    fetch(`/api/produtoPag?page=${page}&limit=${limit}`)
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById('produto-tbody');
+            tbody.innerHTML = ''; // Limpar a tabela
+            data.data.forEach(produto => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${produto.sigla}</td>
+                    <td>${produto.concentracao}</td>
+                    <td>${produto.densidade}</td>
+                    <td>${produto.nome_produto}</td>
+                    <td>${produto.quantidade}</td>
+                    <td>${produto.tipo_unidade_produto}</td>
+                    <td>${produto.ncm}</td>
+                `;
+                tbody.appendChild(tr);
+            });
 
+            updatePagination(data.totalPages, data.currentPage);
+        })
+        .catch(error => console.error('Erro ao carregar produtos:', error));
+}
 
 // Chame a função para carregar os usuários
 loadProdutos();
@@ -121,7 +144,6 @@ function loadProdutosSelect() {
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
 }
-
 
 // Função para enviar o formulário
 document.getElementById('add-produto-form').addEventListener('submit', function(event) {
@@ -263,32 +285,6 @@ function excluirproduto(idproduto) {
 // Carrega os siglas ao inicializar a página
  document.addEventListener('DOMContentLoaded', carregarsiglas);
 
-
- // load produto
-    function loadproduto(page = 1, limit = 20) {
-    fetch(`/api/produtoPag?page=${page}&limit=${limit}`)
-        .then(response => response.json())
-        .then(data => {
-            const tbody = document.getElementById('produto-tbody');
-            tbody.innerHTML = ''; // Limpar a tabela
-            data.data.forEach(produto => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${produto.sigla}</td>
-                    <td>${produto.concentracao}</td>
-                    <td>${produto.densidade}</td>
-                    <td>${produto.nome_produto}</td>
-                    <td>${produto.quantidade}</td>
-                    <td>${produto.tipo_unidade_produto}</td>
-                    <td>${produto.ncm}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-
-            updatePagination(data.totalPages, data.currentPage);
-        })
-        .catch(error => console.error('Erro ao carregar produtos:', error));
-}
 
 // Pagination
 function updatePagination(totalPages, currentPage) {
