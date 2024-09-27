@@ -32,7 +32,7 @@ cd sistema-inventario
 Instale as dependências do projeto com o npm:
 
 ```bash
-npm install express path dotenv pdfkit fs express-session bcrypt
+npm install express path dotenv pdfkit fs express-session bcrypt nodemon
 
 ```
 
