@@ -66,7 +66,7 @@ Salve este conteúdo em um arquivo `.sql` e execute com o MySQL:
 mysql -u <usuario> -p < banco_dados_si_dump.sql
 ```
 
-Substitua `<usuario>` pelo seu nome de usuário. Assim, você terá a estrutura das tabelas e o usuário admin configurado corretamente. Se precisar de mais ajustes, estou à disposição!
+Substitua `<usuario>` pelo seu nome de usuário. Assim, você terá a estrutura das tabelas e o usuário admin configurado corretamente.  Teno o scrpt inserido um usuario 'admin@sistema.com', 'administrador', do tipo admin e senha '12345678'
 
 ## Executando o Sistema
 
