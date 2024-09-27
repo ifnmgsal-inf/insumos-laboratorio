@@ -75,7 +75,7 @@ Substitua `<usuario>` pelo seu nome de usuário. Assim, você terá a estrutura 
 Para iniciar o servidor, execute o seguinte comando:
 
 ```bash
-node server.js
+nodemon app.js
 ```
 
 O sistema estará acessível em `http://localhost:3001`.
