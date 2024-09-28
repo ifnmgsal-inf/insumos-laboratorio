@@ -2,29 +2,6 @@
 
 Este sistema foi desenvolvido para aprimorar o gerenciamento e controle de produtos químicos regulamentados pelo Departamento de Polícia Federal no IFNMG - Campus Salinas. Ele facilita o registro de consumo, controle de inventário e a geração de relatórios detalhados, atendendo às normas de fiscalização.
 
-## Execução Rápida
-
-Para uma experiência mais ágil e sem complicações, utilize o link externo abaixo para acessar o sistema:
-
-[https://sistema.lab.salinas.ngrok.dev](https://sistema.lab.salinas.ngrok.dev)
-
-O sistema está disponível todos os dias das 08:30 às 23:00, eliminando a necessidade de clonar o repositório do GitHub, instalar MariaDB, Node.js, Express, e outras dependências, ou configurar um ambiente local. Basta acessar e usar!
-
----
-
-## Acesso para Testes
-
-Dois tipos de usuários com diferentes níveis de acesso foram disponibilizados para fins de teste:
-
-- **Usuário Administrador:**
-  - **Email:** `admin@sistema.com`
-  - **Senha:** `12345678`
-
-- **Usuário Técnico (acesso limitado):**
-  - **Email:** `tecnico02@sistema.com`
-  - **Senha:** `123456`
-
----
 ## Funcionalidades do Sistema
 
 ### Para Usuários do Tipo "Admin" e "Normal"
