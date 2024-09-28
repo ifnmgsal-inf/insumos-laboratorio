@@ -326,39 +326,42 @@ app.get('/api/laboratorios', Autenticado, async (req, res) => {
 
 // Paginação para laboratórios
 app.get('/api/laboratoriosPag', Autenticado, async (req, res) => {
-  const { page = 1, limit = 20 } = req.query; // Adicionando limite aqui
-  const pageInt = parseInt(page, 10);
-  const limitInt = parseInt(limit, 10); // Convertendo limit para número
+    const { page = 1, limit = 20 } = req.query; // Parâmetros de página e limite
+    const pageInt = parseInt(page, 10);
+    const limitInt = parseInt(limit, 10); // Convertendo limit para número
 
-  if (isNaN(pageInt) || isNaN(limitInt)) {
-      return res.status(400).json({ error: 'Os parâmetros de página e limite devem ser inteiros.' });
-  }
+    if (isNaN(pageInt) || isNaN(limitInt)) {
+        return res.status(400).json({ error: 'Os parâmetros de página e limite devem ser inteiros.' });
+    }
 
-  const offset = (pageInt - 1) * limitInt;
+    const offset = (pageInt - 1) * limitInt;
 
-  try {
-      const [rows] = await pool.execute(`
-          SELECT l.id_laboratorio, l.nome_laboratorio, u.email AS usuario_email, u.nome_usuario
-          FROM laboratorio l
-          JOIN usuario u ON l.usuario_email = u.email
-          LIMIT ? OFFSET ?
-      `, [limitInt, offset]); // Usando parâmetros para evitar SQL injection
+    try {
+        // Usando pool para executar a consulta paginada
+        const [rows] = await pool.execute(`
+            SELECT l.id_laboratorio, l.nome_laboratorio, u.email AS usuario_email, u.nome_usuario
+            FROM laboratorio l
+            JOIN usuario u ON l.usuario_email = u.email
+            LIMIT ? OFFSET ?
+        `, [limitInt, offset]); // Usando parâmetros para evitar SQL injection
 
-      const [countResult] = await pool.execute('SELECT COUNT(*) as total FROM laboratorio');
-      const totalItems = countResult[0].total;
-      const totalPages = Math.ceil(totalItems / limitInt);
+        // Contar o total de laboratórios
+        const [countResult] = await pool.execute('SELECT COUNT(*) as total FROM laboratorio');
+        const totalItems = countResult[0].total;
+        const totalPages = Math.ceil(totalItems / limitInt);
 
-      res.json({
-          data: rows,
-          totalItems,
-          totalPages,
-          currentPage: pageInt,
-      });
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro no servidor' });
-  }
+        res.json({
+            data: rows,
+            totalItems,
+            totalPages,
+            currentPage: pageInt,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro no servidor' });
+    }
 });
+
 
 
 // Adicionar um laboratório
