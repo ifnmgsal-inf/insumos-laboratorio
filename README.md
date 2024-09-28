@@ -1,46 +1,81 @@
+## Execução Rápida
 
-# Sistema WEB para Registro do Uso dos Produtos Químicos Fiscalizados pelo Departamento de Polícia Federal no IFNMG Campus Salinas
-
-<p align="center">
-    <img src="https://qualitapps.com/wp-content/uploads/2023/02/102.png" width="120" height="80"/>
-</p>
-
-Este sistema foi desenvolvido com o objetivo de otimizar o gerenciamento e controle do uso de produtos químicos regulamentados pelo departamento da Polícia Federal no IFNMG - Campus Salinas.
-
-## Execução Rápida e Confiável
-
-Para uma execução mais ágil, recomendo o uso do link: [https://sistema.lab.salinas.ngrok.dev](https://sistema.lab.salinas.ngrok.dev)
-O sistema está disponível diariamente das 08:30 às 23:00, proporcionando maior rapidez, sem a necessidade de clonar o github, realizar a instalação do MariaDB, node e Express, e outras dependências, e configurar o ambiente local.
+Para uma experiência mais ágil e sem complicações, utilize o link externo abaixo para acessar o sistema:
 
 [https://sistema.lab.salinas.ngrok.dev](https://sistema.lab.salinas.ngrok.dev)
 
+O sistema está disponível todos os dias das 08:30 às 23:00, eliminando a necessidade de clonar o repositório do GitHub, instalar MariaDB, Node.js, Express, e outras dependências, ou configurar um ambiente local. Basta acessar e usar!
+
+---
+
 ## Acesso para Testes
 
-Para fins de teste, foram disponibilizados dois tipos de usuários com diferentes níveis de acesso:
+Dois tipos de usuários com diferentes níveis de acesso foram disponibilizados para fins de teste:
 
 - **Usuário Administrador:**
-  - **Email:** admin@sistema.com
-  - **Senha:** 12345678
+  - **Email:** `admin@sistema.com`
+  - **Senha:** `12345678`
 
 - **Usuário Técnico (acesso limitado):**
-  - **Email:** tecnico02@sistema.com
-  - **Senha:** 123456
+  - **Email:** `tecnico02@sistema.com`
+  - **Senha:** `123456`
+
+---
+## Funcionalidades do Sistema
+
+### Para Usuários do Tipo "Admin" e "Normal"
+
+1. **Registro de Consumo:**
+   - Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e uma descrição adicional.
+
+2. **Visualização e Geração de Relatórios em PDF:**
+   - Gera relatórios detalhados em PDF com informações sobre o inventário e os consumos registrados.
+
+3. **Inventário:**
+   - Exibe todos os produtos do inventário, incluindo o nome do produto, a quantidade disponível e informações complementares.
+
+### Funcionalidades Exclusivas para Usuários do Tipo "Admin"
+
+1. **Registro de Entrada:**
+   - Na página de movimentações, o administrador pode registrar entradas de produtos com os seguintes campos obrigatórios:
+     - **Produto:** Seleção do produto.
+     - **Quantidade:** Quantidade do produto.
+     - **Data de Entrada:** Data em que o produto entrou no inventário.
+     - **Descrição:** Informações adicionais sobre a entrada do produto.
+
+2. **Gerenciamento de Produtos:**
+   - **Adicionar Produtos:** Permite a inclusão de novos produtos químicos ao inventário, com detalhes como sigla, concentração, densidade, nome completo, tipo de unidade (mililitros ou gramas) e NCM.
+   - **Atualizar Produtos:** Atualiza as informações dos produtos já cadastrados.
+   - **Remover Produtos:** Exclui produtos do inventário após a confirmação do usuário.
+
+3. **Gerenciamento de Usuários:**
+   - **Adicionar Usuários:** Permite a criação de novos usuários, solicitando os seguintes dados:
+     - Nome de Usuário.
+     - Email.
+     - Tipo de Usuário (Normal ou Admin).
+     - Senha e confirmação da senha.
+   - **Visualizar Usuários:** Exibe uma lista com todos os usuários cadastrados no sistema.
+   - **Gerenciar Status de Usuários:** Ativa ou desativa o acesso de usuários. Usuários ativados podem fazer login, enquanto usuários desativados não podem acessar o sistema.
+
+4. **Gerenciamento de Laboratórios:**
+   - **Adicionar Laboratório:** Permite a inclusão de novos laboratórios, solicitando o nome do laboratório e o responsável.
+   - **Visualizar Laboratórios:** Exibe todos os laboratórios cadastrados no sistema.
+   - **Editar Responsável pelo Laboratório:** Atualiza o responsável atribuído a um laboratório.
+   - **Remover Laboratório:** Exclui laboratórios do sistema.
 
 
-A seguir o tutorial de uso local.
+## Tutorial para Execução Local
 
-## Pré-requisitos
+### Pré-requisitos
 
-Certifique-se de que você tem as seguintes ferramentas instaladas:
+Certifique-se de ter as seguintes ferramentas instaladas no seu ambiente local:
 
-- Node.js (v14 ou superior)
-- MySQL (ou MariaDB)
+- **Node.js** (versão 14 ou superior)
+- **MySQL** (ou **MariaDB**)
 
-## Instalando
+### Clonando o Repositório
 
-### Clonar o Repositório
-
-Clone o repositório para a sua máquina local:
+Clone o repositório do GitHub para a sua máquina local com os comandos abaixo:
 
 ```bash
 git clone https://github.com/seu-usuario/sistema-inventario.git
@@ -96,44 +131,3 @@ nodemon app.js
 
 O sistema estará acessível em `http://localhost:3001`.
 
-## Funcionalidades do Sistema
-
-### Para Usuários do Tipo "Admin" e "Normal"
-
-1. **Registro de Consumo:**
-   - Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e uma descrição adicional.
-
-2. **Visualização e Geração de Relatórios em PDF:**
-   - Gera relatórios detalhados em PDF com informações sobre o inventário e os consumos registrados.
-
-3. **Inventário:**
-   - Exibe todos os produtos do inventário, incluindo o nome do produto, a quantidade disponível e informações complementares.
-
-### Funcionalidades Exclusivas para Usuários do Tipo "Admin"
-
-1. **Registro de Entrada:**
-   - Na página de movimentações, o administrador pode registrar entradas de produtos com os seguintes campos obrigatórios:
-     - **Produto:** Seleção do produto.
-     - **Quantidade:** Quantidade do produto.
-     - **Data de Entrada:** Data em que o produto entrou no inventário.
-     - **Descrição:** Informações adicionais sobre a entrada do produto.
-
-2. **Gerenciamento de Produtos:**
-   - **Adicionar Produtos:** Permite a inclusão de novos produtos químicos ao inventário, com detalhes como sigla, concentração, densidade, nome completo, tipo de unidade (mililitros ou gramas) e NCM.
-   - **Atualizar Produtos:** Atualiza as informações dos produtos já cadastrados.
-   - **Remover Produtos:** Exclui produtos do inventário após a confirmação do usuário.
-
-3. **Gerenciamento de Usuários:**
-   - **Adicionar Usuários:** Permite a criação de novos usuários, solicitando os seguintes dados:
-     - Nome de Usuário.
-     - Email.
-     - Tipo de Usuário (Normal ou Admin).
-     - Senha e confirmação da senha.
-   - **Visualizar Usuários:** Exibe uma lista com todos os usuários cadastrados no sistema.
-   - **Gerenciar Status de Usuários:** Ativa ou desativa o acesso de usuários. Usuários ativados podem fazer login, enquanto usuários desativados não podem acessar o sistema.
-
-4. **Gerenciamento de Laboratórios:**
-   - **Adicionar Laboratório:** Permite a inclusão de novos laboratórios, solicitando o nome do laboratório e o responsável.
-   - **Visualizar Laboratórios:** Exibe todos os laboratórios cadastrados no sistema.
-   - **Editar Responsável pelo Laboratório:** Atualiza o responsável atribuído a um laboratório.
-   - **Remover Laboratório:** Exclui laboratórios do sistema.
