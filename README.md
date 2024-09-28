@@ -96,7 +96,7 @@ nodemon app.js
 
 O sistema estará acessível em `http://localhost:3001`.
 
-## Funcionalidades do Sistema
+## Funcionalidades do Sistema para Usuários do tipo "admin"
 
 ### 1. Gerenciamento de Produtos
 - **Adicionar Produtos:** Inclui novos produtos químicos ao inventário, com detalhes como sigla, concentração, densidade, nome completo, tipo de unidade (mililitros ou gramas) e NCM.
@@ -106,7 +106,7 @@ O sistema estará acessível em `http://localhost:3001`.
 ### 2. Registro de Consumo
 - **Registrar Consumo:** Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e descrição adicional.
 
-### 3. Geração de Relatórios em PDF
+### 3.Visualização e Geração de Relatórios em PDF
 - **Relatórios Detalhados:** Gera relatórios em PDF com informações sobre o inventário e consumos registrados.
 
 ## Sub-abas do Sistema
@@ -123,6 +123,13 @@ O sistema estará acessível em `http://localhost:3001`.
 ### 7. Registrar Entrada
 - O usuário registra a entrada de produtos ao selecionar o item, informar a quantidade, a data da entrada e uma descrição, clicando em "Registrar" para finalizar o processo.
 
-## Acesso ao Sistema
-- **Usuários do tipo "normal":** Têm acesso limitado, podendo usar apenas o inventário e as funcionalidades de registro.
-- **Usuários do tipo "admin":** Têm acesso a opções administrativas adicionais para um maior controle do sistema.
+## Funcionalidades do Sistema para Usuários do tipo "normal"
+
+### 1. Registro de Consumo
+- **Registrar Consumo:** Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e descrição adicional.
+
+### 2. Visualização e Geração de Relatórios em PDF
+- **Relatórios Detalhados:** Gera relatórios em PDF com informações sobre o inventário e consumos registrados.
+
+### 3. Produtos
+- Exibe todos os produtos, mostrando o nome do produto, a quantidade disponível e informações adicionais.
