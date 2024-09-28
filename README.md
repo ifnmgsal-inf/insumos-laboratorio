@@ -96,40 +96,44 @@ nodemon app.js
 
 O sistema estará acessível em `http://localhost:3001`.
 
-## Funcionalidades do Sistema para Usuários do tipo "admin"
+## Funcionalidades do Sistema
 
-### 1. Gerenciamento de Produtos
-- **Adicionar Produtos:** Inclui novos produtos químicos ao inventário, com detalhes como sigla, concentração, densidade, nome completo, tipo de unidade (mililitros ou gramas) e NCM.
-- **Editar Produtos:** Atualiza informações sobre produtos já cadastrados.
-- **Remover Produtos:** Exclui produtos do inventário após confirmação do usuário.
+### Para Usuários do Tipo "Admin" e "Normal"
 
-### 2. Registro de Consumo
-- **Registrar Consumo:** Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e descrição adicional.
+1. **Registro de Consumo:**
+   - Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e uma descrição adicional.
 
-### 3.Visualização e Geração de Relatórios em PDF
-- **Relatórios Detalhados:** Gera relatórios em PDF com informações sobre o inventário e consumos registrados.
+2. **Visualização e Geração de Relatórios em PDF:**
+   - Gera relatórios detalhados em PDF com informações sobre o inventário e os consumos registrados.
 
-## Sub-abas do Sistema
+3. **Inventário:**
+   - Exibe todos os produtos do inventário, incluindo o nome do produto, a quantidade disponível e informações complementares.
 
-### 4. Inventário
-- Exibe todos os produtos, mostrando o nome do produto, a quantidade disponível e informações adicionais.
+### Funcionalidades Exclusivas para Usuários do Tipo "Admin"
 
-### 5. Adicionar Produto
-- O usuário preenche os campos necessários e clica em "Adicionar Estoque" para concluir o cadastro de novos produtos.
+1. **Registro de Entrada:**
+   - Na página de movimentações, o administrador pode registrar entradas de produtos com os seguintes campos obrigatórios:
+     - **Produto:** Seleção do produto.
+     - **Quantidade:** Quantidade do produto.
+     - **Data de Entrada:** Data em que o produto entrou no inventário.
+     - **Descrição:** Informações adicionais sobre a entrada do produto.
 
-### 6. Excluir Produto
-- O usuário seleciona um produto da lista e confirma a exclusão clicando em "Excluir Estoque".
+2. **Gerenciamento de Produtos:**
+   - **Adicionar Produtos:** Permite a inclusão de novos produtos químicos ao inventário, com detalhes como sigla, concentração, densidade, nome completo, tipo de unidade (mililitros ou gramas) e NCM.
+   - **Atualizar Produtos:** Atualiza as informações dos produtos já cadastrados.
+   - **Remover Produtos:** Exclui produtos do inventário após a confirmação do usuário.
 
-### 7. Registrar Entrada
-- O usuário registra a entrada de produtos ao selecionar o item, informar a quantidade, a data da entrada e uma descrição, clicando em "Registrar" para finalizar o processo.
+3. **Gerenciamento de Usuários:**
+   - **Adicionar Usuários:** Permite a criação de novos usuários, solicitando os seguintes dados:
+     - Nome de Usuário.
+     - Email.
+     - Tipo de Usuário (Normal ou Admin).
+     - Senha e confirmação da senha.
+   - **Visualizar Usuários:** Exibe uma lista com todos os usuários cadastrados no sistema.
+   - **Gerenciar Status de Usuários:** Ativa ou desativa o acesso de usuários. Usuários ativados podem fazer login, enquanto usuários desativados não podem acessar o sistema.
 
-## Funcionalidades do Sistema para Usuários do tipo "normal"
-
-### 1. Registro de Consumo
-- **Registrar Consumo:** Permite o registro detalhado do consumo de produtos, incluindo a seleção do produto, quantidade, laboratório, data do consumo e descrição adicional.
-
-### 2. Visualização e Geração de Relatórios em PDF
-- **Relatórios Detalhados:** Gera relatórios em PDF com informações sobre o inventário e consumos registrados.
-
-### 3. Produtos
-- Exibe todos os produtos, mostrando o nome do produto, a quantidade disponível e informações adicionais.
+4. **Gerenciamento de Laboratórios:**
+   - **Adicionar Laboratório:** Permite a inclusão de novos laboratórios, solicitando o nome do laboratório e o responsável.
+   - **Visualizar Laboratórios:** Exibe todos os laboratórios cadastrados no sistema.
+   - **Editar Responsável pelo Laboratório:** Atualiza o responsável atribuído a um laboratório.
+   - **Remover Laboratório:** Exclui laboratórios do sistema.
