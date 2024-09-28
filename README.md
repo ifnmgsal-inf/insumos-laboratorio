@@ -1,3 +1,18 @@
+# Sistema WEB para Registro do Uso de Produtos Químicos Regulamentados pelo Departamento de Polícia Federal no IFNMG - Campus Salinas
+
+<p align="center">
+  <img src="https://qualitapps.com/wp-content/uploads/2023/02/102.png" width="120" height="80"/>
+</p>
+
+Este sistema foi desenvolvido para aprimorar o gerenciamento e controle de produtos químicos regulamentados pelo Departamento de Polícia Federal no IFNMG - Campus Salinas. Ele facilita o registro de consumo, controle de inventário e a geração de relatórios detalhados, atendendo às normas de fiscalização.
+
+## Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas no seu ambiente:
+
+- **Node.js** (v14 ou superior)
+- **MySQL** (ou **MariaDB**)
+
 ## Execução Rápida
 
 Para uma experiência mais ágil e sem complicações, utilize o link externo abaixo para acessar o sistema:
