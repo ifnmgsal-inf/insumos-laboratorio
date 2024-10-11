@@ -907,37 +907,75 @@ app.get('/generate-pdf-consumo', async (req, res) => {
 
 // Endpoint para registrar entrada
 app.post('/api/registrar_entrada', async (req, res) => {
-  const { id_produto, quantidade, data_entrada, descricao } = req.body;
-
-  try {
-      const [result] = await pool.execute(
-          'INSERT INTO registro_entrada (id_produto, quantidade, data_entrada, descricao) VALUES (?, ?, ?, ?)', 
-          [id_produto, quantidade, data_entrada, descricao]
-      );
-      res.json({ message: 'Entrada registrada com sucesso!' });
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao registrar entrada.' });
-  }
-});
+    const { id_produto, quantidade, data_entrada, descricao } = req.body;
+  
+    try {
+        // Passo 1: Buscar a quantidade atual do produto
+        const [produto] = await pool.execute('SELECT quantidade FROM produto WHERE id_produto = ?', [id_produto]);
+  
+        if (produto.length === 0) {
+            return res.status(404).json({ error: 'Produto não encontrado.' });
+        }
+  
+        const quantidadeAtual = produto[0].quantidade;
+  
+        // Passo 2: Somar a nova quantidade
+        const novaQuantidade = quantidadeAtual + quantidade;
+  
+        // Passo 3: Atualizar a quantidade no banco de dados
+        await pool.execute('UPDATE produto SET quantidade = ? WHERE id_produto = ?', [novaQuantidade, id_produto]);
+  
+        // Passo 4: Inserir o registro de entrada
+        await pool.execute(
+            'INSERT INTO registro_entrada (id_produto, quantidade, data_entrada, descricao) VALUES (?, ?, ?, ?)', 
+            [id_produto, quantidade, data_entrada, descricao]
+        );
+  
+        res.json({ message: 'Entrada registrada e quantidade atualizada com sucesso!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao registrar entrada.' });
+    }
+  });
+  
 
 // Endpoint para registrar consumo
 app.post('/api/registrar_consumo', async (req, res) => {
-  console.log(req.body); // Adicione isso para verificar o que está sendo enviado
-
-  const { data_consumo, id_produto, id_laboratorio, quantidade, descricao } = req.body;
-
-  try {
-      const [result] = await pool.execute(
-          'INSERT INTO registro_consumo (data_consumo, id_produto, id_laboratorio, quantidade, descricao) VALUES (?, ?, ?, ?, ?)', 
-          [data_consumo, id_produto, id_laboratorio, quantidade, descricao]
-      );
-      res.json({ message: 'Consumo registrado com sucesso!' });
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao registrar consumo.' });
-  }
-});
+    const { data_consumo, id_produto, id_laboratorio, quantidade, descricao } = req.body;
+  
+    try {
+        // Passo 1: Buscar a quantidade atual do produto
+        const [produto] = await pool.execute('SELECT quantidade FROM produto WHERE id_produto = ?', [id_produto]);
+  
+        if (produto.length === 0) {
+            return res.status(404).json({ error: 'Produto não encontrado.' });
+        }
+  
+        const quantidadeAtual = produto[0].quantidade;
+  
+        // Passo 2: Verificar se a quantidade informada é válida
+        if (quantidade > quantidadeAtual) {
+            return res.status(400).json({ error: 'Quantidade insuficiente no produto.' });
+        }
+  
+        // Passo 3: Subtrair a quantidade consumida do produto
+        const novaQuantidade = quantidadeAtual - quantidade;
+  
+        // Passo 4: Atualizar a quantidade no banco de dados
+        await pool.execute('UPDATE produto SET quantidade = ? WHERE id_produto = ?', [novaQuantidade, id_produto]);
+  
+        // Passo 5: Inserir o registro de consumo
+        await pool.execute(
+            'INSERT INTO registro_consumo (data_consumo, id_produto, id_laboratorio, quantidade, descricao) VALUES (?, ?, ?, ?, ?)', 
+            [data_consumo, id_produto, id_laboratorio, quantidade, descricao]
+        );
+  
+        res.json({ message: 'Consumo registrado e quantidade atualizada com sucesso!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao registrar consumo.' });
+    }
+  });
 
 
 app.get('/api/consumos', Autenticado, async (req, res) => {
